@@ -1,0 +1,6 @@
+groups:
+  - name: example_rules
+    interval: 1m
+    rules:
+      - record: api_error_rate:rate5m
+        expr: sum(rate(api_request_histogram_count{status="error"}[5m])) / sum(rate(api_request_histogram_count[5m]))

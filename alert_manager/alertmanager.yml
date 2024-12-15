@@ -1,0 +1,21 @@
+global:
+  smtp_smarthost: 'smtp.gmail.com:587'
+  smtp_from: temp.hungpham@gmail.com
+  smtp_auth_username: temp.hungpham@gmail.com
+  smtp_auth_password: tnjs gekf mnro loas
+  smtp_require_tls: true
+
+route:
+  receiver: 'email-alert'
+
+receivers:
+- name: email-alert
+  email_configs:
+  - send_resolved: true
+    to: alert_receiver@yopmail.com
+    headers:
+      From: alert.monitoring@demo.com
+      # Subject: '{{ template "email.default.subject" . }}'
+      To: alert_receiver@yopmail.com
+    # html: '{{ template "email.default.html" . }}'
+    # require_tls: true
